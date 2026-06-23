@@ -1,8 +1,50 @@
 import 'package:flutter/material.dart';
 import 'dart:math';
+import 'package:provider/provider.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(ChangeNotifierProvider(
+    create: (context) => WidgetOracle(),
+    child: const MyApp(),
+  ));
+}
+
+class WidgetOracle extends ChangeNotifier{
+  String _currentFortune = 'Click Here';
+  String get currentFortune => _currentFortune;
+
+  void getfortune() {
+    final List<String>fortuneList = ["A pleasant surprise awaits you today.",
+  "Trust your instincts—they will guide you well.",
+  "An exciting opportunity is on the horizon.",
+  "Your kindness will return to you tenfold.",
+  "A long-awaited wish may soon come true.",
+  "Great things come to those who stay patient.",
+  "Someone is thinking of you right now.",
+  "Adventure and new experiences await you.",
+  "Your creativity will shine brightly today.",
+  "Fortune favors the bold. Take the first step.",
+  "A challenge ahead will reveal your true strength.",
+  "Good news will find you sooner than expected.",
+  "Listen carefully - an important message is coming.",
+  "The answer you seek already lies within you.",
+  "A chance encounter may change your path.",
+  "The stars encourage you to follow your dreams.",
+  "Today is a perfect day to begin something new.",
+  "Luck is quietly working in your favor.",
+  "A hidden opportunity will soon reveal itself.",
+  "Your future is brighter than you imagine.",
+  "Believe in yourself, and magic will follow.",
+  "Unexpected joy is heading your way.",
+  "The universe is aligning in your favor.",
+  "A small act of courage will bring great rewards.",
+  "Peace and happiness will surround you today."];
+
+    var random = Random();
+    int r_value = random.nextInt(fortuneList.length);
+    _currentFortune = fortuneList[r_value];
+    notifyListeners();
+  }
 }
 
 class MyApp extends StatelessWidget {
@@ -32,44 +74,7 @@ class Practice extends StatefulWidget {
 
 class _PracticeState extends State<Practice> {
 
-  final List<String>fortuneList = ["A pleasant surprise awaits you today.",
-  "Trust your instincts—they will guide you well.",
-  "An exciting opportunity is on the horizon.",
-  "Your kindness will return to you tenfold.",
-  "A long-awaited wish may soon come true.",
-  "Great things come to those who stay patient.",
-  "Someone is thinking of you right now.",
-  "Adventure and new experiences await you.",
-  "Your creativity will shine brightly today.",
-  "Fortune favors the bold. Take the first step.",
-  "A challenge ahead will reveal your true strength.",
-  "Good news will find you sooner than expected.",
-  "Listen carefully - an important message is coming.",
-  "The answer you seek already lies within you.",
-  "A chance encounter may change your path.",
-  "The stars encourage you to follow your dreams.",
-  "Today is a perfect day to begin something new.",
-  "Luck is quietly working in your favor.",
-  "A hidden opportunity will soon reveal itself.",
-  "Your future is brighter than you imagine.",
-  "Believe in yourself, and magic will follow.",
-  "Unexpected joy is heading your way.",
-  "The universe is aligning in your favor.",
-  "A small act of courage will bring great rewards.",
-  "Peace and happiness will surround you today."];
-
-  String currentFortune = 'Click Here';
-
   bool isPressed = false;
-  void getfortune() {
-    var random = Random();
-    int r_value = random.nextInt(fortuneList.length);
-
-    setState(() {
-      currentFortune = fortuneList[r_value];
-    });
-  }
-  
   
   @override
   Widget build(BuildContext context) {
@@ -93,6 +98,7 @@ class _PracticeState extends State<Practice> {
     );
   }
       Widget portraitmode()  {
+        var currentFortune = context.watch<WidgetOracle>().currentFortune;
         return Column(
           children: [ Padding(
             padding: const EdgeInsets.all(10.0),
@@ -139,7 +145,7 @@ class _PracticeState extends State<Practice> {
 
                 InkWell(
                   onTap: () {
-                    getfortune();
+                    context.read<WidgetOracle>().getfortune();
                   },
                   onTapUp: (_) {
                     setState(() {
@@ -173,7 +179,7 @@ class _PracticeState extends State<Practice> {
                   ),
                     child: Padding(
                       padding: const EdgeInsets.all(10.0),
-                      child: Text(currentFortune ,
+                      child: Text(currentFortune,
                       style: TextStyle(
                         color: Colors.deepPurple,
                         fontWeight: FontWeight.bold,
