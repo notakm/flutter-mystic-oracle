@@ -29,6 +29,12 @@ Ensure you have the following installed:
 * Android Emulator or Physical Device
 
 ---
+## Screenshots
+
+![Home Screen](screenshots/portrait.jpg)
+![Landscape](screenshots/landscape.jpg)
+
+---
 
 ### Installation
 
