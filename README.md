@@ -6,14 +6,14 @@
 
 ## Features
 
-* 🔮 Random fortune generation
-* 🎲 25 unique mystical predictions
-* ✨ Interactive oracle ball with tap animation
-* 📱 Responsive orientation handling
-* 🎨 Beautiful and colorful user interface
-* ⚡ Smooth button press animations
-* 🌌 Mystical and engaging theme
-* 📲 Cross-platform Flutter support
+* Random fortune generation
+* 25 unique mystical predictions
+* Interactive oracle ball with tap animation
+* Responsive orientation handling
+* Beautiful and colorful user interface
+* Smooth button press animations
+* Mystical and engaging theme
+* Cross-platform Flutter support
 
 ---
 
@@ -134,9 +134,9 @@ GitHub: https://github.com/notakm
 
 ---
 
-## ⭐ Support
+## Support
 
-If you enjoyed this project, please consider giving it a ⭐ on GitHub. Your support is greatly appreciated!
+If you enjoyed this project, please consider giving it a star on GitHub. Your support is greatly appreciated!
 
 ---
 
